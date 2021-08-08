@@ -1,4 +1,8 @@
 defmodule OnePiece.Commanded.Command do
+  alias OnePiece.Commanded.Command
+  alias OnePiece.Commanded.Entity
+  alias OnePiece.Commanded.Helpers
+  
   @type t :: struct()
 
   @doc """
@@ -24,10 +28,6 @@ defmodule OnePiece.Commanded.Command do
 
     quote do
       use Ecto.Schema
-
-      alias OnePiece.Commanded.Command
-      alias OnePiece.Commanded.Entity
-      alias OnePiece.Helpers
 
       @typedoc """
       The key used to identify the aggregate.
