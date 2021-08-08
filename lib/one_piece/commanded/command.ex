@@ -2,7 +2,7 @@ defmodule OnePiece.Commanded.Command do
   alias OnePiece.Commanded.Command
   alias OnePiece.Commanded.Entity
   alias OnePiece.Commanded.Helpers
-  
+
   @type t :: struct()
 
   @doc """
