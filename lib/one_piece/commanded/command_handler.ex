@@ -28,8 +28,8 @@ defmodule OnePiece.Commanded.CommandHandler do
         end
       end
   """
-  @spec __using__ :: any()
-  defmacro __using__ do
+  @spec __using__(opts :: []) :: any()
+  defmacro __using__(_opts \\ []) do
     quote do
       @behaviour Commanded.Commands.Handler
       alias Commanded.Aggregate.Multi

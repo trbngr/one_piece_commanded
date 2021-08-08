@@ -2,7 +2,7 @@ defmodule OnePiece.Commanded.MixProject do
   use Mix.Project
 
   @name :one_piece_commanded
-  @version "0.1.1"
+  @version "0.1.2"
   @elixir_version "~> 1.11"
   @source_url "https://github.com/straw-hat-team/one_piece_commanded"
 

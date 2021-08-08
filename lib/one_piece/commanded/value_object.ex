@@ -12,8 +12,8 @@ defmodule OnePiece.Commanded.ValueObject do
         end
       end
   """
-  @spec __using__ :: any()
-  defmacro __using__ do
+  @spec __using__(opts :: []) :: any()
+  defmacro __using__(_opts \\ []) do
     quote do
       use Ecto.Schema
       @derive Jason.Encoder

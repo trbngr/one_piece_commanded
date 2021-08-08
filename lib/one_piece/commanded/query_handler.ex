@@ -27,7 +27,8 @@ defmodule OnePiece.Commanded.QueryHandler do
         end
       end
   """
-  defmacro __using__ do
+  @spec __using__(opts :: []) :: any()
+  defmacro __using__(_opts \\ []) do
     quote do
       @behaviour OnePiece.Commanded.QueryHandler
     end
