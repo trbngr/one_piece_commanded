@@ -1,3 +1,3 @@
 defmodule OnePiece.Commanded do
-  @doc false
+  @moduledoc false
 end
