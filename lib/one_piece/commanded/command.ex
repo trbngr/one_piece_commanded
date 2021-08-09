@@ -57,8 +57,8 @@ defmodule OnePiece.Commanded.Command do
       @doc """
       Put the `value` into `t:t/0` aggregate identifier key.
       """
-      @spec add_aggregate_id(command :: Command.t(), Entity.identity()) :: Command.t()
-      def add_aggregate_id(command, value) do
+      @spec put_aggregate_id(command :: Command.t(), Entity.identity()) :: Command.t()
+      def put_aggregate_id(command, value) do
         Map.put(command, @aggregate_identifier_key, value)
       end
     end
