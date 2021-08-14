@@ -1,12 +1,12 @@
 defmodule OnePiece.Commanded.QueryHandler do
-  @type t :: struct()
+  @type view_model :: struct()
 
   @type error :: any()
 
   @doc """
   Handle the incoming `params` and return the result data.
   """
-  @callback handle(params :: any()) :: {:ok, t()} | {:error, error()}
+  @callback handle(params :: any()) :: {:ok, view_model()} | {:error, error()}
 
   @doc """
   Convert the module into a `OnePiece.Commanded.QueryHandler`.
