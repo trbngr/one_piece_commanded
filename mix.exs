@@ -2,7 +2,7 @@ defmodule OnePiece.Commanded.MixProject do
   use Mix.Project
 
   @name :one_piece_commanded
-  @version "0.2.0"
+  @version "0.2.1"
   @elixir_version "~> 1.11"
   @source_url "https://github.com/straw-hat-team/one_piece_commanded"
 
@@ -72,7 +72,8 @@ defmodule OnePiece.Commanded.MixProject do
         "lib",
         "mix.exs",
         "README*",
-        "LICENSE*"
+        "LICENSE*",
+        "test/test_support"
       ],
       maintainers: ["Yordis Prieto"],
       licenses: ["MIT"],
