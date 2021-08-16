@@ -44,20 +44,44 @@ defmodule OnePiece.Commanded.TestSupport.CommandHandlerCase do
       @handler Keyword.get(unquote(opts), :handler, nil)
 
       defp assert_events(initial_events, command, expected_events) do
-        CommandHandlerCase.assert_events(initial_events, command, expected_events, @aggregate, @handler)
+        CommandHandlerCase.assert_events(
+          initial_events,
+          command,
+          expected_events,
+          @aggregate,
+          @handler
+        )
       end
 
       defp assert_state(initial_events, command, expected_state) do
-        CommandHandlerCase.assert_state(initial_events, command, expected_state, @aggregate, @handler)
+        CommandHandlerCase.assert_state(
+          initial_events,
+          command,
+          expected_state,
+          @aggregate,
+          @handler
+        )
       end
 
       defp assert_error(initial_events, command, expected_error) do
-        CommandHandlerCase.assert_error(initial_events, command, expected_error, @aggregate, @handler)
+        CommandHandlerCase.assert_error(
+          initial_events,
+          command,
+          expected_error,
+          @aggregate,
+          @handler
+        )
       end
     end
   end
 
-  def assert_events(initial_events, command, expected_events, aggregate_module, command_handler_module) do
+  def assert_events(
+        initial_events,
+        command,
+        expected_events,
+        aggregate_module,
+        command_handler_module
+      ) do
     assert {:ok, _state, events} =
              aggregate_run(
                aggregate_module,
@@ -72,7 +96,13 @@ defmodule OnePiece.Commanded.TestSupport.CommandHandlerCase do
     assert actual_events == expected_events
   end
 
-  def assert_state(initial_events, command, expected_state, aggregate_module, command_handler_module) do
+  def assert_state(
+        initial_events,
+        command,
+        expected_state,
+        aggregate_module,
+        command_handler_module
+      ) do
     assert {:ok, state, _events} =
              aggregate_run(
                aggregate_module,
@@ -84,13 +114,20 @@ defmodule OnePiece.Commanded.TestSupport.CommandHandlerCase do
     assert state == expected_state
   end
 
-  def assert_error(initial_events, command, expected_error, aggregate_module, command_handler_module) do
-    assert ^expected_error = aggregate_run(
-             aggregate_module,
-             command_handler_module,
-             initial_events,
-             command
-           )
+  def assert_error(
+        initial_events,
+        command,
+        expected_error,
+        aggregate_module,
+        command_handler_module
+      ) do
+    assert ^expected_error =
+             aggregate_run(
+               aggregate_module,
+               command_handler_module,
+               initial_events,
+               command
+             )
   end
 
   defp aggregate_run(aggregate_module, command_handler_module, initial_events, command) do
@@ -98,8 +135,8 @@ defmodule OnePiece.Commanded.TestSupport.CommandHandlerCase do
 
     decider =
       if command_handler_module == nil,
-         do: &aggregate_module.execute/2,
-         else: &command_handler_module.handle/2
+        do: &aggregate_module.execute/2,
+        else: &command_handler_module.handle/2
 
     aggregate_module
     |> struct()
