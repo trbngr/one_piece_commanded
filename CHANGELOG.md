@@ -2,6 +2,10 @@
 
 ## Unreleased
 
+## v0.2.1 - 2021-08-15
+
+- Add test support files
+
 ## v0.2.0 - 2021-08-08
 
 - Fix putting aggregate id to command function name
