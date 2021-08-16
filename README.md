@@ -30,7 +30,7 @@ In your `test_helper.exs`, add the following code-snippet:
       
 ```elixir
 one_piece_commanded_path = Mix.Project.deps_paths()[:one_piece_commanded]
-Code.require_file "#{one_piece_commanded_path}/test/test_support/command_handler_case.exs", __DIR__
+Code.require_file "#{one_piece_commanded_path}/test/test_support/command_handler_case.ex", __DIR__
 
 # ...
 

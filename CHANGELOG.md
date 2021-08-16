@@ -2,6 +2,11 @@
 
 ## Unreleased
 
+## v0.3.0 - 2021-08-15
+
+- Fix docs
+- Fix version bump
+
 ## v0.2.1 - 2021-08-15
 
 - Add test support files
