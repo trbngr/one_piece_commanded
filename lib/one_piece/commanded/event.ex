@@ -1,6 +1,4 @@
-defmodule OnePiece.Commanded.Command do
-  alias OnePiece.Commanded.Command
-  alias OnePiece.Commanded.Entity
+defmodule OnePiece.Commanded.Event do
   alias OnePiece.Commanded.Helpers
 
   @type t :: struct()
@@ -10,8 +8,8 @@ defmodule OnePiece.Commanded.Command do
 
   ## Usage
 
-      defmodule MyCommand do
-        use OnePiece.Commanded.Command, aggregate_identifier: :id
+      defmodule MyEvent do
+        use OnePiece.Commanded.Event, aggregate_identifier: :id
 
         embedded_schema do
           # ...
@@ -52,14 +50,6 @@ defmodule OnePiece.Commanded.Command do
       @spec aggregate_identifier :: aggregate_identifier_key()
       def aggregate_identifier do
         @aggregate_identifier_key
-      end
-
-      @doc """
-      Put the `value` into `t:t/0` aggregate identifier key.
-      """
-      @spec put_aggregate_id(command :: Command.t(), Entity.identity()) :: Command.t()
-      def put_aggregate_id(command, value) do
-        Map.put(command, @aggregate_identifier_key, value)
       end
     end
   end
