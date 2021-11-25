@@ -1,4 +1,11 @@
 defmodule OnePiece.Commanded.QueryHandler do
+  @moduledoc """
+  Defines a module as a "Query Handler". For more information about queries,
+  please read the following:
+
+  - [CQRS pattern](https://docs.microsoft.com/en-us/azure/architecture/patterns/cqrs)
+  """
+
   @type view_model :: struct()
 
   @type error :: any()

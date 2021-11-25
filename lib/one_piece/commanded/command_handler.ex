@@ -1,4 +1,11 @@
 defmodule OnePiece.Commanded.CommandHandler do
+  @moduledoc """
+  Defines a module as a "Command Handler". For more information about commands,
+  please read the following:
+
+  - [CQRS pattern](https://docs.microsoft.com/en-us/azure/architecture/patterns/cqrs)
+  """
+
   @doc """
   Convert the module into a `Commanded.Commands.Handler`.
 

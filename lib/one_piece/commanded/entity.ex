@@ -1,4 +1,8 @@
 defmodule OnePiece.Commanded.Entity do
+  @moduledoc """
+  Defines a module as an "Entity" in the context of Domain-Driven Design.
+  """
+
   @typedoc """
   The identity of an entity.
   """
