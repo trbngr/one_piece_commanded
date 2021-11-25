@@ -2,6 +2,10 @@
 
 ## Unreleased
 
+## v0.4.0 - 2021-11-25
+
+- Improve documentation
+
 ## v0.4.0 - 2021-08-15
 
 - Add `OnePiece.Commanded.Event` module
