@@ -27,3 +27,5 @@ one_piece_commanded-*.tar
 
 /priv/plts/*.plt
 /priv/plts/*.plt.hash
+
+!.tool-versions

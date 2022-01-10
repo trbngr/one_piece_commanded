@@ -85,7 +85,9 @@ defmodule OnePiece.Commanded.MixProject do
       ],
       maintainers: ["Yordis Prieto"],
       licenses: ["MIT"],
-      links: %{"GitHub" => @source_url}
+      links: %{
+        "GitHub" => @source_url
+      }
     ]
   end
 
