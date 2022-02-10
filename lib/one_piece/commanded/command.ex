@@ -28,7 +28,7 @@ defmodule OnePiece.Commanded.Command do
   @spec __using__(opts :: [aggregate_identifier: atom()]) :: any()
   defmacro __using__(opts \\ []) do
     unless Keyword.has_key?(opts, :aggregate_identifier) do
-      raise ArgumentError, "Missing :aggregate_identifier key"
+      raise ArgumentError, "missing :aggregate_identifier key"
     end
 
     aggregate_identifier = Keyword.fetch!(opts, :aggregate_identifier)

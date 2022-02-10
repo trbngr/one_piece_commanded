@@ -24,7 +24,7 @@ defmodule OnePiece.Commanded.Entity do
   @spec __using__(opts :: [identifier: atom()]) :: any()
   defmacro __using__(opts \\ []) do
     unless Keyword.has_key?(opts, :identifier) do
-      raise ArgumentError, "Missing :identifier key"
+      raise ArgumentError, "missing :identifier key"
     end
 
     identifier = Keyword.fetch!(opts, :identifier)
