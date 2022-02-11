@@ -1,7 +1,7 @@
 defmodule OnePiece.Commanded.TypeProvider.Import do
   @moduledoc false
   alias alias OnePiece.Commanded.TypeProvider
-  alias OnePiece.Commanded.TypeProvider.{Error, Event, Import}
+  alias OnePiece.Commanded.TypeProvider.{Error, Event}
 
   def register(provider) do
     quote do
@@ -11,13 +11,13 @@ defmodule OnePiece.Commanded.TypeProvider.Import do
 
   def to_string_functions(provider) do
     provider
-    |> Import.get_provider_events()
+    |> get_provider_events()
     |> Enum.map(&Event.generate_to_string/1)
   end
 
   def to_struct_functions(provider) do
     provider
-    |> Import.get_provider_events()
+    |> get_provider_events()
     |> Enum.map(&Event.generate_to_struct/1)
   end
 
