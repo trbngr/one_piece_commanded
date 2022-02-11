@@ -11,6 +11,7 @@ defmodule OnePiece.Commanded.TypeProvider do
       Module.register_attribute(__MODULE__, :events, accumulate: true)
 
       @before_compile TypeProvider
+      @after_compile TypeProvider
 
       import TypeProvider, only: :macros
     end
@@ -38,6 +39,12 @@ defmodule OnePiece.Commanded.TypeProvider do
         raise Error,
               ~s(%#{inspect(struct.__struct__)}{} is not registered in the #{inspect(__MODULE__)} type provider)
       end
+    end
+  end
+
+  defmacro __after_compile__(_env, _bytecode) do
+    quote do
+      Enum.each(@events, &Event.validate_struct/1)
     end
   end
 end
