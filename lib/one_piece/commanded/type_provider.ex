@@ -28,15 +28,12 @@ defmodule OnePiece.Commanded.TypeProvider do
     to_string = TypeProvider.generate_to_string()
     to_struct = TypeProvider.generate_to_struct()
 
-    code =
-      quote do
-        def __events__, do: @events
+    quote do
+      def __events__, do: @events
 
-        unquote(to_string)
-        unquote(to_struct)
-      end
-
-    code
+      unquote(to_string)
+      unquote(to_struct)
+    end
   end
 
   @doc false
