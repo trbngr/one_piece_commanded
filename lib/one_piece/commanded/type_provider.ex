@@ -25,27 +25,48 @@ defmodule OnePiece.Commanded.TypeProvider do
     do: Import.register(provider)
 
   defmacro __before_compile__(_env) do
-    quote do
-      def __events__, do: @events
+    to_string = TypeProvider.generate_to_string()
+    to_struct = TypeProvider.generate_to_struct()
 
-      to_struct_funcs = Enum.map(@events, &Event.generate_to_struct/1)
-      imported_struct_funcs = Enum.map(@providers, &Import.to_struct_functions/1)
+    code =
+      quote do
+        def __events__, do: @events
 
-      Module.eval_quoted(__MODULE__, to_struct_funcs ++ imported_struct_funcs)
-
-      def to_struct(name) do
-        raise Error,
-              ~s("#{inspect(name)}" is not registered in the #{inspect(__MODULE__)} type provider)
+        unquote(to_string)
+        unquote(to_struct)
       end
 
-      to_string_funcs = Enum.map(@events, &Event.generate_to_string/1)
-      imported_string_funcs = Enum.map(@providers, &Import.to_string_functions/1)
+    code
+  end
 
-      Module.eval_quoted(__MODULE__, to_string_funcs ++ imported_string_funcs)
+  @doc false
+  def generate_to_string do
+    quote do
+      funcs = Enum.map(@events, &Event.generate_to_string/1)
+      Module.eval_quoted(__MODULE__, funcs)
+
+      funcs = Enum.map(@providers, &Import.to_string_functions/1)
+      Module.eval_quoted(__MODULE__, funcs)
 
       def to_string(struct) do
         raise Error,
               ~s(%#{inspect(struct.__struct__)}{} is not registered in the #{inspect(__MODULE__)} type provider)
+      end
+    end
+  end
+
+  @doc false
+  def generate_to_struct do
+    quote do
+      funcs = Enum.map(@events, &Event.generate_to_struct/1)
+      Module.eval_quoted(__MODULE__, funcs)
+
+      funcs = Enum.map(@providers, &Import.to_struct_functions/1)
+      Module.eval_quoted(__MODULE__, funcs)
+
+      def to_struct(name) do
+        raise Error,
+              ~s("#{inspect(name)}" is not registered in the #{inspect(__MODULE__)} type provider)
       end
     end
   end
