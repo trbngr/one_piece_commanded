@@ -25,8 +25,8 @@ defmodule OnePiece.Commanded.TypeProvider do
     do: Import.register(provider)
 
   defmacro __before_compile__(_env) do
-    to_string = TypeProvider.generate_to_string()
-    to_struct = TypeProvider.generate_to_struct()
+    to_string = generate_to_string()
+    to_struct = generate_to_struct()
 
     quote do
       def __events__, do: @events
@@ -36,8 +36,7 @@ defmodule OnePiece.Commanded.TypeProvider do
     end
   end
 
-  @doc false
-  def generate_to_string do
+  defp generate_to_string do
     quote do
       funcs = Enum.map(@events, &Event.generate_to_string/1)
       Module.eval_quoted(__MODULE__, funcs)
@@ -52,8 +51,7 @@ defmodule OnePiece.Commanded.TypeProvider do
     end
   end
 
-  @doc false
-  def generate_to_struct do
+  defp generate_to_struct do
     quote do
       funcs = Enum.map(@events, &Event.generate_to_struct/1)
       Module.eval_quoted(__MODULE__, funcs)
