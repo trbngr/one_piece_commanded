@@ -45,7 +45,7 @@ defmodule OnePiece.Commanded.TypeProvider do
       funcs = Enum.map(@events, &Event.generate_to_string/1)
       Module.eval_quoted(__MODULE__, funcs)
 
-      funcs = Enum.map(@providers, &Import.to_string_functions/1)
+      funcs = Enum.flat_map(@providers, &Import.to_string_functions/1)
       Module.eval_quoted(__MODULE__, funcs)
 
       def to_string(struct) do
@@ -61,7 +61,7 @@ defmodule OnePiece.Commanded.TypeProvider do
       funcs = Enum.map(@events, &Event.generate_to_struct/1)
       Module.eval_quoted(__MODULE__, funcs)
 
-      funcs = Enum.map(@providers, &Import.to_struct_functions/1)
+      funcs = Enum.flat_map(@providers, &Import.to_struct_functions/1)
       Module.eval_quoted(__MODULE__, funcs)
 
       def to_struct(name) do
