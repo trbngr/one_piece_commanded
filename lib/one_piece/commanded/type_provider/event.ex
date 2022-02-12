@@ -26,8 +26,14 @@ defmodule OnePiece.Commanded.TypeProvider.Event do
   end
 
   def validate_struct({event_struct, _string_identifier}) do
-    unless event_struct.__info__(:functions)[:__struct__] do
-      raise Error, message: "#{inspect(event_struct)} not a struct!"
+    case Code.ensure_compiled(event_struct) do
+      {:module, module} ->
+        unless module.__info__(:functions)[:__struct__] do
+          raise Error, message: "#{inspect(event_struct)} not a struct!"
+        end
+
+      _ ->
+        raise Error, message: "#{inspect(event_struct)} not a struct!"
     end
   end
 end
